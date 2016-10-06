@@ -1,24 +1,67 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿.navbar > .container > .navbar-collapse > ul > li > a {
+  color: #4d004d;
 }
-
+.navbar > .container > .navbar-collapse > ul > li > a:hover {
+  color: #cc00cc;
+  font-size: medium;
+}
+.navbar {
+  background-color: #e6ffff;
+}
+.navbar-header > .navbar-brand {
+  color: #4d004d;
+}
+.navbar-header > .navbar-brand:hover {
+  color: #cc00cc;
+  font-size: 19px;
+}
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: lightgoldenrodyellow;
 }
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+  white-space: normal;
 }
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+  max-width: 280px;
+}
+.field-validation-error {
+  color: green;
+  font-size: 15px;
+}
+.input-validation-error {
+  border: 1px solid green;
+}
+#createSave {
+  margin-top: 10px;
+  height: 3em;
+  width: 20em;
+}
+.form-control {
+  color: darkblue;
+  background-color: lightcyan;
+}
+.body-content {
+  color: green;
+}
+/*
+footer {
+    position: absolute;
+    bottom: 0;
+}
+*/
+.nav-wrapper {
+  background-color: white;
 }

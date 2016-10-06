@@ -1,0 +1,16 @@
+﻿@model StudentCatalogFall2016.Models.Entity.StudentModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    //VIGTIGT HER!
+    @Html.HiddenFor(a => a.StudentModelId);
+
+    //Partial vil sige du bruger et andet view.
+    @Html.Partial("_StudentForm")
+}

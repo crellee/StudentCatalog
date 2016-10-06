@@ -1,0 +1,80 @@
+﻿@model IEnumerable<StudentCatalogFall2016.Models.Entity.StudentModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+        @using (Html.BeginForm("Index", "Students", FormMethod.Get))
+        {
+            <nav>
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required" name="SearchString">
+                            <label for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+
+
+       <!--         <p>
+                    @Html.TextBox("SearchString")
+                    <br />
+                    <input type="submit" value="Search" placeholder="Search by title" />
+                </p> -->
+        }
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobilePhone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobilePhone)
+        </td>
+        <td>
+            <!--snabelA if(Roles.IsUserInRole("Adminstrator"))-->
+            <!--if(Context.User.Identity.IsAuthenticated) -->
+             @if(User.IsInRole("Adminstrator"))
+                {
+                @Html.ActionLink("Edit", "Edit", new { id=item.StudentModelId }) 
+                }
+            @Html.ActionLink("Details", "Details", new { id=item.StudentModelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentModelId })
+        </td>
+    </tr>
+
+
+}
+        
+    
+</table>

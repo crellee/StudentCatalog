@@ -20,6 +20,8 @@ namespace StudentCatalogFall2016.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Entity.StudentModel> Students { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,5 +31,9 @@ namespace StudentCatalogFall2016.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<StudentCatalogFall2016.Models.Entity.CompetencyHeaderModel> CompentencyHeaderModels { get; set; }
+
+        public System.Data.Entity.DbSet<StudentCatalogFall2016.Models.Entity.CompetencyModel> CompentencyMocdels { get; set; }
     }
 }

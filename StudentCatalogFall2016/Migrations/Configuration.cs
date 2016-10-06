@@ -1,5 +1,8 @@
 namespace StudentCatalogFall2016.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using Models.Entity;
     using System;
     using System.Data.Entity;
@@ -142,6 +145,35 @@ namespace StudentCatalogFall2016.Migrations
                                                                         Name = "Microsoft Office"
                                                                     },
                                                                 });
+
+
+            //get a ref. to the UserManager
+            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            rm.Create(new IdentityRole("admin"));
+
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            
+            //create an object of the ApplicationUser and provide a username
+            var client1 = new ApplicationUser { UserName = "chrk@kea.dk" };
+            
+            //Add the client1 object to the database through the usermanager (and suply password).
+            var result1 = userManager.Create(client1, "P_assw0rd1");
+            
+            //If that does not go well (username could already exist), look up the user instead.
+            if (result1.Succeeded == false)
+            {
+                client1 = userManager.FindByName("chrk@kea.dk");
+            }
+
+            //save this change to the database to get the GUID that is used as an Id.
+            context.SaveChanges();
+
+            //Now when creating new users you can use this value.
+
+            //Add the following to Student
+            //UserId = client.Id
+
+            userManager.AddToRole(client1.Id, "admin");
 
 
         }
